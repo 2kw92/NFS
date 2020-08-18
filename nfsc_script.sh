@@ -12,11 +12,15 @@ echo "192.168.50.10:/mnt/upload /mnt/upload nfs rw,vers=3,sync,proto=udp,rsize=3
 touch /etc/systemd/system/mnt-upload.mount
 echo "[Unit]
 Description=NFS share
+Requires=network-online.service
+After=network-online.servie
 [Mount]
 What=192.168.50.10:/mnt/upload
 Where=/mnt/upload
 Type=nfs
-Options=rw,proto=udp,vers=3" >> /etc/systemd/system/mnt-upload.mount
+Options=rw,proto=udp,vers=3
+[Install]
+WantedBy=multi-user.target" >> /etc/systemd/system/mnt-upload.mount
 
 systemctl daemon-reload
 systemctl enable mnt-upload.mount
