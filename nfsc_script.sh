@@ -13,7 +13,7 @@ touch /etc/systemd/system/mnt-upload.mount
 echo "[Unit]
 Description=NFS share
 Requires=network-online.service
-After=network-online.servie
+After=network-online.serviсe
 [Mount]
 What=192.168.50.10:/mnt/upload
 Where=/mnt/upload
